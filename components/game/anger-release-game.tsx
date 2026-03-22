@@ -219,7 +219,7 @@ export function AngerReleaseGame(){
   const shards     =useRef<Shard[]>([])
   const fires      =useRef<FirePool[]>([])
   const shakeRef   =useRef(0)
-  const animRef    =useRef<number>()
+  const animRef    =useRef<number>(0)
 
   useEffect(()=>{weaponRef.current=weapon},[weapon])
   useEffect(()=>{ammoRef.current=ammo},[ammo])

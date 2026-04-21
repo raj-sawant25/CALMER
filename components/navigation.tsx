@@ -43,32 +43,38 @@ export function Navigation() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-xl">
-      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-            <span className="text-lg font-bold text-primary-foreground">C</span>
-          </div>
-          <span className="text-xl font-semibold tracking-tight">CALMER</span>
-        </Link>
+      <nav className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 relative">
+        {/* Left Side - Logo and Nav Links */}
+        <div className="flex items-center gap-8 z-20">
+          <Link href="/" className="flex items-center gap-3 group transition-transform duration-300 hover:scale-[1.02]">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent shadow-lg shadow-primary/20 group-hover:shadow-primary/40 transition-all duration-300">
+              <span className="text-xl font-black text-primary-foreground">C</span>
+            </div>
+            <span className="text-2xl font-black tracking-tighter bg-gradient-to-r from-primary via-foreground to-accent bg-clip-text text-transparent group-hover:via-primary transition-all duration-300">
+              CALMER
+            </span>
+          </Link>
 
-        <div className="hidden items-center gap-1 md:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                'rounded-md px-3 py-2 text-sm font-medium transition-colors',
-                pathname === link.href
-                  ? 'bg-secondary text-foreground'
-                  : 'text-muted-foreground hover:bg-secondary/50 hover:text-foreground'
-              )}
-            >
-              {link.label}
-            </Link>
-          ))}
+          <div className="hidden md:flex items-center gap-1">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  'rounded-md px-3 py-2 text-sm font-medium transition-colors',
+                  pathname === link.href
+                    ? 'bg-secondary text-foreground'
+                    : 'text-muted-foreground hover:bg-secondary/50 hover:text-foreground'
+                )}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        {/* Right Auth */}
+        <div className="flex items-center justify-end gap-3 z-10">
           {loading ? (
             <div className="h-9 w-20 animate-pulse rounded-md bg-secondary" />
           ) : user ? (
